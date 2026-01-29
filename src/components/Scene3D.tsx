@@ -7,7 +7,7 @@ import * as THREE from "three";
 import { useScroll, useSpring } from "framer-motion";
 
 // Generate particles outside to satisfy purity rules
-const PARTICLE_COUNT = 2000;
+const PARTICLE_COUNT = 800; // Reduced from 2000 for performance
 const PARTICLE_POSITIONS = new Float32Array(PARTICLE_COUNT * 3);
 for (let i = 0; i < PARTICLE_COUNT; i++) {
     PARTICLE_POSITIONS[i * 3] = (Math.random() - 0.5) * 15;
@@ -16,8 +16,8 @@ for (let i = 0; i < PARTICLE_COUNT; i++) {
 }
 
 // Generate cluster positions outside
-const CLUSTER_POSITIONS = new Float32Array(500 * 3);
-for (let i = 0; i < 500 * 3; i++) {
+const CLUSTER_POSITIONS = new Float32Array(200 * 3); // Reduced from 500
+for (let i = 0; i < 200 * 3; i++) {
     CLUSTER_POSITIONS[i] = (Math.random() - 0.5) * 10;
 }
 

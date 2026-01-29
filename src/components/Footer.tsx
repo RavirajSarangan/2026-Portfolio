@@ -41,7 +41,8 @@ export default function Footer() {
                         onClick={scrollToTop}
                         whileHover={{ scale: 1.05, translateY: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="flex items-center gap-3 text-white/30 hover:text-white transition-colors group"
+                        aria-label="Scroll back to top of page"
+                        className="flex items-center gap-3 text-white/30 hover:text-white transition-colors group focus:outline-none focus:ring-2 focus:ring-accent"
                     >
                         <span className="text-[10px] uppercase tracking-[0.2em] font-bold">Back to top</span>
                         <div className="w-8 h-8 glass rounded-full flex items-center justify-center group-hover:border-white/20 transition-all border border-transparent">

@@ -3,15 +3,20 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import ClickSpark from "@/components/ui/click-spark";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap", // Faster text rendering
+  preload: true,
 });
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
+  display: "swap", // Faster text rendering
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -65,6 +70,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          {/* Skip to content link for keyboard accessibility */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[200] focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-lg focus:outline-none"
+          >
+            Skip to main content
+          </a>
           <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,#1a1a1a_0%,#000000_100%)]" />
           <ClickSpark
             sparkColor='#a855f7'
@@ -76,6 +88,7 @@ export default function RootLayout({
             {children}
           </ClickSpark>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

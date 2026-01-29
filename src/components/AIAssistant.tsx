@@ -219,7 +219,8 @@ export default function AIAssistant() {
                     animate={{ scale: 1 }}
                     whileHover={{ scale: 1.1, rotate: 12 }}
                     onClick={() => setIsOpen(true)}
-                    className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center group"
+                    aria-label="Open AI Assistant"
+                    className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-accent"
                 >
                     <div className="absolute inset-0 bg-accent/20 rounded-full blur-xl group-hover:bg-accent/40 transition-colors" />
                     <Sparkles className="text-accent relative z-10" size={24} />

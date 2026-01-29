@@ -17,14 +17,17 @@ export default function About() {
                             <div className="absolute inset-0 glass rounded-3xl overflow-hidden border border-white/10">
                                 <Image
                                     src="/images/mockup.png"
-                                    alt="Design Frame"
+                                    alt="Portfolio design mockup showcasing project work"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
                                     className="object-cover transition-all duration-500 opacity-40 blur-sm"
                                 />
                                 <Image
                                     src="/images/portrait.jpg"
-                                    alt="Raviraj Sarangan"
+                                    alt="Raviraj Sarangan - Full Stack Developer and AI Specialist"
                                     fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority
                                     className="object-cover transition-all duration-700 group-hover:scale-110 relative z-10"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 z-20" />

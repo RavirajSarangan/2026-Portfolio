@@ -8,6 +8,12 @@ const nextConfig: NextConfig = {
         hostname: "images.unsplash.com",
       },
     ],
+    formats: ["image/avif", "image/webp"], // Modern formats for better compression
+    minimumCacheTTL: 31536000, // 1 year cache for images
+  },
+  // Enable experimental optimizations
+  experimental: {
+    optimizeCss: true, // Minify CSS
   },
   async headers() {
     return [
@@ -29,6 +35,25 @@ const nextConfig: NextConfig = {
           {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
+          },
+        ],
+      },
+      // Cache static assets for 1 year
+      {
+        source: "/images/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        source: "/_next/static/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },

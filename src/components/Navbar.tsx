@@ -60,10 +60,10 @@ export default function Navbar() {
                     {/* Socials & CTA */}
                     <div className="hidden md:flex items-center gap-4">
                         <div className="flex items-center gap-3 mr-4 border-r border-white/10 pr-4">
-                            <Link href="#" className="text-white/50 hover:text-white transition-colors">
+                            <Link href="https://github.com/RavirajSarangan" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="text-white/50 hover:text-white transition-colors">
                                 <Github size={18} />
                             </Link>
-                            <Link href="#" className="text-white/50 hover:text-white transition-colors">
+                            <Link href="https://www.linkedin.com/in/sarangan-raviraj/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="text-white/50 hover:text-white transition-colors">
                                 <Linkedin size={18} />
                             </Link>
                         </div>
@@ -76,6 +76,8 @@ export default function Navbar() {
                     <button
                         className="md:hidden text-white"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={mobileMenuOpen}
                     >
                         {mobileMenuOpen ? <X /> : <Menu />}
                     </button>

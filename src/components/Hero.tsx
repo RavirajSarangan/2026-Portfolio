@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { Github, Linkedin, Camera, Move, Activity } from "lucide-react";
 import { InteractiveButton } from "./ui/3d-button";
-import Scene3D from "./Scene3D";
+
+// Lazy load the heavy 3D scene for better performance
+const Scene3D = dynamic(() => import("./Scene3D"), {
+    ssr: false,
+    loading: () => (
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-950/20 to-black" />
+    ),
+});
 
 interface HeroProps {
     isInteractive: boolean;
@@ -132,15 +140,16 @@ export default function Hero({ isInteractive, setIsInteractive }: HeroProps) {
 
                                 <div className="flex items-center gap-6">
                                     {[
-                                        { icon: Github, href: "https://github.com/RavirajSarangan" },
-                                        { icon: Linkedin, href: "https://www.linkedin.com/in/sarangan-raviraj/" }
+                                        { icon: Github, href: "https://github.com/RavirajSarangan", label: "GitHub Profile" },
+                                        { icon: Linkedin, href: "https://www.linkedin.com/in/sarangan-raviraj/", label: "LinkedIn Profile" }
                                     ].map((item, i) => (
                                         <a
                                             key={i}
                                             href={item.href}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-12 h-12 glass rounded-full flex items-center justify-center text-white/60 hover:text-white hover:scale-110 transition-all"
+                                            aria-label={item.label}
+                                            className="w-12 h-12 glass rounded-full flex items-center justify-center text-white/60 hover:text-white hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-black"
                                         >
                                             <item.icon size={20} />
                                         </a>
