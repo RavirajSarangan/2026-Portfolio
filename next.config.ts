@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
   },
   // Enable experimental optimizations
   experimental: {
-    optimizeCss: true, // Minify CSS
+    optimizeCss: false, // Disable temporarily for troubleshooting
   },
   async headers() {
     return [

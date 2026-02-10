@@ -3,14 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Palette, Cpu, Database, Layout } from "lucide-react";
-import dynamic from "next/dynamic";
-
-const IconCloud = dynamic(() => import("./ui/interactive-icon-cloud").then((mod) => mod.IconCloud), {
-    ssr: false,
-    loading: () => <div className="h-full w-full flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin" />
-    </div>
-});
+import { IconCloud } from "./ui/interactive-icon-cloud";
 
 const skillCategories = [
     {

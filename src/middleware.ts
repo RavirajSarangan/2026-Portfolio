@@ -8,7 +8,7 @@ export function middleware(request: NextRequest) {
 
     const cspDirectives = {
         "default-src": ["'self'"],
-        "script-src": ["'self'", `'nonce-${nonce}'`, "'strict-dynamic'", isDev ? "'unsafe-eval'" : "", "'unsafe-inline'"],
+        "script-src": ["'self'", `'nonce-${nonce}'`, "'unsafe-eval'", "'unsafe-inline'"],
         "style-src": ["'self'", "'unsafe-inline'"],
         "img-src": ["'self'", "blob:", "data:", "https://images.unsplash.com", "https://cdn.jsdelivr.net", "https://raw.githubusercontent.com", "https://assets.unicorn.studio", "https://simpleicons.org"],
         "font-src": ["'self'", "data:"],
