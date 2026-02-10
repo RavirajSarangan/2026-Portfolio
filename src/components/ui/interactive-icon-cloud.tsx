@@ -74,15 +74,22 @@ export function IconCloud({ iconSlugs }: DynamicCloudProps) {
     }, [])
 
     useEffect(() => {
+        let isCancelled = false;
         fetchSimpleIcons({ slugs: iconSlugs })
-            .then(setData)
+            .then((res) => {
+                if (!isCancelled) setData(res);
+            })
             .catch((err) => {
                 console.error("IconCloud fetch error:", err);
+                if (!isCancelled) setData({ simpleIcons: {} } as any); // Set empty data to prevent hanging
             });
+        return () => {
+            isCancelled = true;
+        };
     }, [iconSlugs])
 
     const renderedIcons = useMemo(() => {
-        if (!data) return null
+        if (!data || !data.simpleIcons) return null;
 
         return Object.values(data.simpleIcons).map((icon) =>
             renderCustomIcon(icon, theme || "light"),

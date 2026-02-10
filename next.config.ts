@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Set the root directory for Turbopack to silence workspace inference warnings
+  // @ts-ignore - Turbopack root config
+  turbopack: {
+    root: ".",
+  },
   images: {
     remotePatterns: [
       {
